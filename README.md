@@ -14,10 +14,12 @@
   - 한글이 깨지면 **File -> Properties -> UTF-8로 변경**
   - **주의** html에서 jsp로 변경후 아무것도 건들지 않아야 적용됨
 - 공지사항을 출력해주는 **<tr>** 태그라인 1개 빼고 삭제
+<br>
   
 ### JDBC를 이용해 글 목록 구현하기 - 52강 내용
 
 - Database를 연동하기 위해 import 추가
+  - list.jsp 맨위 상단에 적용
   ``` java
   String url = "jdbc:orcle:thin:@localhost:1521/xepdb1";
   String sql = "SELECT * FROM NOTICE";
@@ -27,6 +29,14 @@
   Statement st = con.createStatement();
   ResultSet rs = st.executeQuery(sql);
   ```
+  
+  - list.jsp </html> 맨 하단에 적용
+  ``` java
+  rs.close();
+  st.close();
+  con.close();
+  ```
+  <br>
   
 - **추가적으로 해야할 것**
   - Oracle Database(DBMS)설치
