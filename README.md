@@ -60,14 +60,14 @@ Java JDBC코드에 오타가 없는지 잘 살펴본다.<br>
 - 추가사항
   - detail.html -> detail.jsp
   
-##### list.jsp
+#### list.jsp
 
 - 게시글의 번호(ID) 가져오기
   - 정적이였던 게시글의 번호(ID)를 정적으로 변경해 준다.
   - 변경전: ```<a href="detail.html"><%=rs.getString("TITLE") %>```
   - 변경후: ```<a href="detail.jsp?id=<%=rs.getInt("ID")%>">```
 
-##### detail.jsp
+#### detail.jsp
 
 - 사용자가 게시글 클릭후 클릭한 게시글로 이동한다.
   - list.jsp가 게시글의 목록을 나타냈다면, detail.jsp는 게시글의 내부를 나타낸다.
@@ -100,12 +100,15 @@ Java JDBC코드에 오타가 없는지 잘 살펴본다.<br>
   ResultSet rs = st.executeQuery(sql);
   ```
   <br>
+  
   - detail.jsp
   ``` java
   int id = Integer.parseInt(request.getParameter("id"));
   PreparedStatement st = con.prepareStatement(sql);
-	st.setInt(1, id);
+  st.setInt(1, id);
 	
-	ResultSet rs = st.executeQuery();
-	rs.next();
+  ResultSet rs = st.executeQuery();
+  rs.next();
   ```
+<hr><br>
+detail.jsp의 코드에 대한 추가적인 설명은 정리 후 작성 예정
